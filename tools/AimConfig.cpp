@@ -2,7 +2,7 @@
 
 // Aim settings
 AimConfig::AimConfig()
-    : smoothing(2.5f),     // Higher = smoother (slower) movement
+    : smoothing(8.0f),     // Higher = smoother (slower) movement
       maxDistance(300.0f), // Maximum pixel distance to target
       minAreaSize(50),     // Minimum countour area to consider
       aimAtHead(true),     // Aim at top of bounding box instead of center

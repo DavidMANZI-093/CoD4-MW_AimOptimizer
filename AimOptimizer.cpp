@@ -136,7 +136,7 @@ int main() {
             }
             
             // Finding best target and aim if key is pressed
-            if (GetAsyncKeyState(config.aimKey) & 0x8000) {
+            if (!(GetAsyncKeyState(config.aimKey) & 0x8000)) {
                 Point targetPos = FindBestTarget(
                     enemies,
                     config,
