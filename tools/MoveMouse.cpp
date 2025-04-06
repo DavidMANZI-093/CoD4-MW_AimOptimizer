@@ -24,7 +24,7 @@ void MoveMouse(
     dy /= l_config.smoothing;
 
     // Applying integer rounding to ensure consistent movement
-    int intDx = (int)(dx + 0 /* (dx >= 0 ? 0.5f : -0.5f) */);
+    int intDx = (int)(dx + (dx >= 0 ? 0.5f : -0.5f));
     int intDy = (int)(dy + (dy >= 0 ? 0.5f : -0.5f));
 
     // Adding slight random variation for more human-like movement

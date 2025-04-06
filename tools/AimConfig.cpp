@@ -6,7 +6,7 @@ AimConfig::AimConfig()
       maxDistance(300.0f), // Maximum pixel distance to target
       minAreaSize(50),     // Minimum countour area to consider
       aimAtHead(true),     // Aim at top of bounding box instead of center
-      headOffset(0.2f),    // Head position (0 = top, 1= bottom)
+      headOffset(0.13f),    // Head position (0 = top, 1= bottom)
 
       // Color detection ranges (using HSV)
       enemyMaskColorLower1(Scalar(0, 100, 100)), // Lower red range

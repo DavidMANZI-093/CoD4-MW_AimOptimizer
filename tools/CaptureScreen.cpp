@@ -2,6 +2,8 @@
 #include "../configs/InitDirectX.h"
 
 #include <iostream>
+#include <iomanip>
+#include <ctime>
 
 using namespace std;
 
@@ -15,6 +17,9 @@ Mat CaptureScreen(
     const int l_startX,
     const int l_startY
 ) {
+    // Local runtime variables
+    time_t now = time(nullptr);
+    tm* localTime = localtime(&now);
     IDXGIResource* pDesktopResource = nullptr;
     DXGI_OUTDUPL_FRAME_INFO frameInfo;
     ID3D11Texture2D* pAcquiredDesktopImage = nullptr;
@@ -22,7 +27,11 @@ Mat CaptureScreen(
     HRESULT hr = l_pDeskDupl->AcquireNextFrame(5, &frameInfo, &pDesktopResource);
     if (FAILED(hr)) {
         if (hr == DXGI_ERROR_ACCESS_LOST) {
-            cout << " Access lost, reinitializing DirectX" << endl;
+            cout << " ["
+            << setw(2) << setfill('0') << localTime->tm_hour << ":"
+            << setw(2) << setfill('0') << localTime->tm_min << ":"
+            << setw(2) << setfill('0') << localTime->tm_sec
+            << "] - Access lost, reinitializing DirectX" << endl;
 
             // Releasing old resources
             if (l_pDeskDupl) {

@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <iostream>
 #include <chrono>
+#include <thread>
+#include <ctime>
 
 #include "./configs/AimConfig.h"
 #include "./configs/InitDirectX.h"
@@ -40,6 +42,10 @@ high_resolution_clock::time_point g_lastToggleTime;
 
 // Entry point
 int main() {
+    // Local runtime variables
+    time_t now = time(nullptr);
+    tm* localTime = localtime(&now);
+
     cout << " CoD4 MW Aim Optimizer - Research/Debug Tool" << endl;
     cout << " ----------------------------------------" << endl;
     cout << "  - O: Toggle Aim Assist" << endl;
@@ -51,7 +57,11 @@ int main() {
     srand(static_cast<unsigned int>(time(nullptr)));
     
     if (!InitDirectX(g_pDeskDupl, g_pDevice, g_pContext)) {
-        cout << " DirectX Initialization Failed!" << endl;
+        cout << " ["
+        << setw(2) << setfill('0') << localTime->tm_hour << ":"
+        << setw(2) << setfill('0') << localTime->tm_min << ":"
+        << setw(2) << setfill('0') << localTime->tm_sec
+        << "] - DirectX Initialization Failed!" << endl;
         return -1;
     }
     
@@ -88,7 +98,11 @@ int main() {
             startY
         );
         if (frame.empty()) {
-            cout << " Failed to capture frame" << endl;
+            cout << " ["
+            << setw(2) << setfill('0') << localTime->tm_hour << ":"
+            << setw(2) << setfill('0') << localTime->tm_min << ":"
+            << setw(2) << setfill('0') << localTime->tm_sec
+            << "] - Failed to capture frame" << endl;
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
             continue;
         }
@@ -202,6 +216,10 @@ int main() {
     if (g_pDevice) g_pDevice->Release();
     destroyAllWindows();
     
-    cout << " Program terminated." << endl;
+    cout << " ["
+    << setw(2) << setfill('0') << localTime->tm_hour << ":"
+    << setw(2) << setfill('0') << localTime->tm_min << ":"
+    << setw(2) << setfill('0') << localTime->tm_sec
+    << "] - Program terminated." << endl;
     return 0;
 }
