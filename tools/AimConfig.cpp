@@ -9,10 +9,10 @@ AimConfig::AimConfig()
       headOffset(0.13f),    // Head position (0 = top, 1= bottom)
 
       // Color detection ranges (using HSV)
-      enemyMaskColorLower1(Scalar(0, 100, 75)), // Lower red range
-      enemyMaskColorUpper1(Scalar(0,100, 100)),
-      enemyMaskColorLower2(Scalar(0, 100, 100)), // Upper red range
-      enemyMaskColorUpper2(Scalar(0, 75, 100)),
+      enemyMaskColorLower1(Scalar(0, 255, 191)), // Lower red range
+      enemyMaskColorUpper1(Scalar(0,255, 255)),
+      enemyMaskColorLower2(Scalar(0, 255, 255)), // Upper red range
+      enemyMaskColorUpper2(Scalar(0, 191, 255)),
 
       // Settings key bindings
       aimKey(VK_END), // Key to hold for aiming
