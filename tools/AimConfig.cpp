@@ -2,17 +2,17 @@
 
 // Aim settings
 AimConfig::AimConfig()
-    : smoothing(5.0f),     // Higher = smoother (slower) movement
+    : smoothing(5.5f),     // Higher = smoother (slower) movement
       maxDistance(300.0f), // Maximum pixel distance to target
       minAreaSize(50),     // Minimum countour area to consider
       aimAtHead(true),     // Aim at top of bounding box instead of center
       headOffset(0.13f),    // Head position (0 = top, 1= bottom)
 
       // Color detection ranges (using HSV)
-      enemyMaskColorLower1(Scalar(0, 255, 191)), // Lower red range
-      enemyMaskColorUpper1(Scalar(0,255, 255)),
-      enemyMaskColorLower2(Scalar(0, 255, 255)), // Upper red range
-      enemyMaskColorUpper2(Scalar(0, 191, 255)),
+      enemyMaskColorLower1(Scalar(0, 100, 100)), // Lower red range
+      enemyMaskColorUpper1(Scalar(10, 255, 255)),
+      enemyMaskColorLower2(Scalar(170, 100, 100)), // Upper red range
+      enemyMaskColorUpper2(Scalar(180, 255, 255)),
 
       // Settings key bindings
       aimKey(VK_END), // Key to hold for aiming
