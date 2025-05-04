@@ -1,5 +1,11 @@
 #include "../configs/MoveMouse.h"
 
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+
+using namespace std;
+
 // Moving cursor with smoothed, human-like motion
 void MoveMouse(
     const Point& targetPos,
@@ -7,6 +13,10 @@ void MoveMouse(
     const int l_startX,
     const int l_startY
 ) {
+    // Local runtime variables
+    time_t now = time(nullptr);
+    tm* localTime = localtime(&now);
+
     if (targetPos.x < 0 || targetPos.y < 0) {
         return; // Invalid target
     }
@@ -30,6 +40,13 @@ void MoveMouse(
     // Adding slight random variation for more human-like movement
     // dx += ((rand() % 100) / 100.0f - 0.5f) * 2.0f;
     // dy += ((rand() % 100) / 100.0f - 0.5f) * 2.0f;
+
+    // Target Coordinates
+    cout << " ["
+    << setw(2) << setfill('0') << localTime->tm_hour << ":"
+    << setw(2) << setfill('0') << localTime->tm_min << ":"
+    << setw(2) << setfill('0') << localTime->tm_sec
+    << "] - Possible target at [x(" << intDx << "), y(" << intDy << ")]" << endl;
 
     // Moving the mouse
     SetCursorPos(
